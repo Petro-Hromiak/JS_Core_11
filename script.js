@@ -1,25 +1,30 @@
 // Function DATE
-function date() {
-    let dd = new Date();
-    let day = dd.getDate();
-    let month = dd.getMonth() + 1;
-    let year = dd.getFullYear();
-    if (day < 10) day = '0' + day;
-    if (month < 10) month = '0' + month;
-    document.querySelector('.date').innerHTML = `${day} . ${month} . ${year}`
+function cuurentDate() {
+    // let dd = new Date();
+    // let day = dd.getDate();
+    // let month = dd.getMonth() + 1;
+    // let year = dd.getFullYear();
+    // if (day < 10) day = '0' + day;
+    // if (month < 10) month = '0' + month;
+    // document.querySelector('.date').innerHTML = `${day} . ${month} . ${year}`
+    document.querySelector('.date').innerHTML = new Date().toLocaleDateString().replaceAll(`/`,`.`)
+
 }
-date()
+cuurentDate()
+
 
 // Function HOUR
 setInterval(() => {
-    let dd = new Date();
-    let hh = dd.getHours();
-    let mm = dd.getMinutes();
-    let ss = dd.getSeconds();
-    if (hh < 10) hh = '0' + hh;
-    if (mm < 10) mm = '0' + mm;
-    if (ss < 10) ss = '0' + ss;
-    document.querySelector('.clock').innerHTML = `${hh} : ${mm} : ${ss}`
+    // let dd = new Date();
+    // let hh = dd.getHours();
+    // let mm = dd.getMinutes();
+    // let ss = dd.getSeconds();
+    // if (hh < 10) hh = '0' + hh;
+    // if (mm < 10) mm = '0' + mm;
+    // if (ss < 10) ss = '0' + ss;
+    // document.querySelector('.clock').innerHTML = `${hh} : ${mm} : ${ss}`
+    document.querySelector('.clock').innerHTML = new Date().toLocaleTimeString()
+
 })
 
 
