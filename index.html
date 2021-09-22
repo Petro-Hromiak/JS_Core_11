@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My forms</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="full-date">
+        <div class="date">00.00.0000</div>
+        <div class="clock">12:00:00</div>
+    </div>
+    <div class="stopwatch">
+        <div class="stopwatch-number-button">
+            <div class="stopwatch-number">
+                <div class="hour">00:00:00</div>
+                <div class="miliseconds">:000</div>
+            </div>
+            <div class="stopwatch-button">
+                <button class="start-SW button" onclick="startStopwatch()">START</button>
+                <button class="loop-SW button" onclick="loopStopwatch()" disabled>LOOP</button>
+                <button class="stop-SW button" onclick="stopStopwatch()" disabled>STOP</button>
+                <button class="reset-SW button" onclick="resetStopwatch()" disabled>RESET</button>
+            </div>
+        </div>
+        <div class="stopwatch-screen"></div>
+        
+    </div>
+    <div class="timer">
+        <div class="timer-minutes">
+            <div class="timer-minutes-screen">
+                <div class="timer-long">1</div>
+                <span>MINUTES</span>
+            </div>
+            <button class="timer-minutes-plus button" onclick="timerPlus()">+</button>
+            <button class="timer-minutes-minus button" onclick="timerMinus()">-</button>
+        </div>
+        <div class="timer-screen">
+            <div class="timer-number">00:00</div>
+            <div class="timer-button">
+                <button class="timer-start button" onclick="timerStart()">START</button>
+                <button class="timer-stop button" onclick="timerStop()" disabled>STOP</button>
+                <button class="timer-reset button" onclick="timerReset()" disabled>RESET</button>
+            </div>
+        </div>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="#" class="popup__close" onclick="closePopup(event)">X</a>
+                <div class="popup__title">Попередження!</div>
+                <div class="popup__text"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

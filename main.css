@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(26, 7, 44);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+}
+
+.full-date, .timer, .stopwatch {
+    width: 100%;
+    height: 30%;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid rgb(126, 72, 177);
+    background-color: rgb(16, 3, 29);
+    color: rgb(180, 180, 192);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+/* Full Date */
+
+.full-date {
+    flex-direction: column;
+}
+
+.date {
+    font-size: 28px;
+}
+
+.clock {
+    font-size: 64px;
+}
+
+
+
+/* stopwatch */
+
+.stopwatch {
+    justify-content: space-around;
+}
+
+.stopwatch-number {
+    font-size: 40px;
+    margin-bottom: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    }
+
+.stopwatch-screen {
+    width: 400px;
+    height: 150px;
+    background-color: rgb(24, 1, 46);
+    border-radius: 10px;
+    border: 1px solid rgb(180, 180, 192);
+    overflow-y:auto;
+}
+
+
+/* timer */
+
+.timer {
+    justify-content: space-around;
+}
+.timer-minutes-screen span{
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.timer-long, .timer-number {
+    font-size: 64px;
+}
+.timer-number{
+    margin-bottom: 20px;
+}
+
+
+.button {
+    width: 55px;
+    height: 25px;
+    margin: 10px 3px;
+    background-color: rgb(16, 3, 29);
+    border-radius: 5px;
+    border: 1px solid rgb(126, 72, 177);
+    color: rgb(180, 180, 192);
+}
+
+.button:focus {
+    border: 1px solid rgb(180, 180, 192);
+}
+
+.button:hover {
+    box-shadow: 0 0 5px rgb(56, 15, 99);
+}
+
+
+/* POPUP Style */
+
+.popup {
+    position: fixed;
+    width: 500px;
+    min-height: 70px;
+    background-color: rgb(24, 1, 46);
+    border: 1px solid rgb(180, 180, 192);
+
+    top: 70%;
+    left: 30%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(43, 13, 72, 0.994);
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.8s ease 0s;
+}
+
+.popup.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup.open .popup__content {
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    opacity: 1;
+}
+
+.popup__body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    text-align: center;
+}
+
+.popup__content {
+    color: rgb(180, 180, 192);
+    font-size: 22px;
+    position: relative;
+    line-height: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.popup__close {
+    position: absolute;
+    right: 14px;
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(180, 180, 192);
+    font-family: monospace;
+}
+
+.popup__title {
+    font-weight: bolder;
+    font-size: 28px;
+    line-height: 32px;
+}
+
+.popup__text {
+    font-style: italic;
+}
