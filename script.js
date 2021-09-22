@@ -1,33 +1,33 @@
 // Function DATE another way
 // function cuurentDate() {
-    // let dd = new Date();
-    // let day = dd.getDate();
-    // let month = dd.getMonth() + 1;
-    // let year = dd.getFullYear();
-    // if (day < 10) day = '0' + day;
-    // if (month < 10) month = '0' + month;
-    // document.querySelector('.date').innerHTML = `${day} . ${month} . ${year}`
+// let dd = new Date();
+// let day = dd.getDate();
+// let month = dd.getMonth() + 1;
+// let year = dd.getFullYear();
+// if (day < 10) day = '0' + day;
+// if (month < 10) month = '0' + month;
+// document.querySelector('.date').innerHTML = `${day} . ${month} . ${year}`
 //    }
 // cuurentDate()
 
 // Function HOUR another way
 // setInterval(() => {
-    // let dd = new Date();
-    // let hh = dd.getHours();
-    // let mm = dd.getMinutes();
-    // let ss = dd.getSeconds();
-    // if (hh < 10) hh = '0' + hh;
-    // if (mm < 10) mm = '0' + mm;
-    // if (ss < 10) ss = '0' + ss;
-    // document.querySelector('.clock').innerHTML = `${hh} : ${mm} : ${ss}`
-    // })
+// let dd = new Date();
+// let hh = dd.getHours();
+// let mm = dd.getMinutes();
+// let ss = dd.getSeconds();
+// if (hh < 10) hh = '0' + hh;
+// if (mm < 10) mm = '0' + mm;
+// if (ss < 10) ss = '0' + ss;
+// document.querySelector('.clock').innerHTML = `${hh} : ${mm} : ${ss}`
+// })
 
 // Cuurent Date and Time
 function cuurentDateAndTime() {
-    document.querySelector('.date').innerHTML = new Date().toLocaleDateString().replaceAll(`/`,`.`)
+    document.querySelector('.date').innerHTML = new Date().toLocaleDateString().replaceAll(`/`, `.`)
     setInterval(() => {
-     document.querySelector('.clock').innerHTML = new Date().toLocaleTimeString()
-})
+        document.querySelector('.clock').innerHTML = new Date().toLocaleTimeString()
+    })
 }
 cuurentDateAndTime()
 
@@ -44,6 +44,7 @@ let stopwatchmsec;
 function startStopwatch() {
 
     stopwatch = setInterval(() => {
+
         sec += 1;
         if (sec >= 60) {
             sec = 0;
@@ -53,52 +54,31 @@ function startStopwatch() {
             hour += 1;
             min = 0
         }
-        if (sec < 10) {
-            if (min < 10) {
-                if (hour < 10) {
-                    document.querySelector('.hour').innerHTML = '0' + hour + ':0' + min + ':0' + sec;
-                } else {
-                    document.querySelector('.hour').innerHTML = hour + ':0' + min + ':0' + sec;
-                }
-            } else {
-                if (hour < 10) {
-                    document.querySelector('.hour').innerHTML = '0' + hour + ':' + min + ':0' + sec;
-                } else {
-                    document.querySelector('.hour').innerHTML = hour + ':' + min + ':0' + sec;
-                }
-            }
-        } else {
-            if (min < 10) {
-                if (hour < 10) {
-                    document.querySelector('.hour').innerHTML = '0' + hour + ':0' + min + ':' + sec;
-                } else {
-                    document.querySelector('.hour').innerHTML = hour + ':0' + min + ':' + sec;
-                }
-            } else {
-                if (hour < 10) {
-                    document.querySelector('.hour').innerHTML = '0' + hour + ':' + min + ':' + sec;
-                } else {
-                    document.querySelector('.hour').innerHTML = hour + ':' + min + ':' + sec;
-                }
-            }
-        }
+
+        let timeToShow = [`00`, `00`, `00`]
+        timeToShow[0] = hour < 10 ? `0${hour}` : hour;
+        timeToShow[1] = min < 10 ? `0${min}` : min;
+        timeToShow[2] = sec < 10 ? `0${sec}` : sec;
+        document.querySelector('.hour').innerHTML = timeToShow.join(`:`)
+
     }, 1000)
     document.querySelector('.start-SW').disabled = true
     document.querySelector('.loop-SW').disabled = false
     document.querySelector('.stop-SW').disabled = false
     document.querySelector('.reset-SW').disabled = false
     stopwatchmsec = setInterval(() => {
-        let d = new Date();
-        msec = d.getMilliseconds()
+        msec = new Date().getMilliseconds()
         if (msec < 10) {
-            document.querySelector('.miliseconds').innerHTML = `:` + '00' + msec;
+            msec = `:00${msec}`;
         }
-        if (msec < 100) {
-            document.querySelector('.miliseconds').innerHTML = `:` + '0' + msec;
+        else if (msec < 100) {
+            msec = `:0${msec}`;
         }
         else {
-            document.querySelector('.miliseconds').innerHTML = ':' + msec;
+            msec = `:${msec}`;
         }
+        document.querySelector('.miliseconds').innerHTML = msec;
+
     }, 1)
 }
 
@@ -111,8 +91,6 @@ function stopStopwatch() {
 
 // LOOP Button
 function loopStopwatch() {
-    // clearInterval(stopwatch)
-    document.querySelector('.start-SW').disabled = false
     document.querySelector('.stopwatch-screen').innerHTML += document.querySelector('.stopwatch-number').textContent + `<br>`
 
 }
@@ -154,21 +132,11 @@ function timerStart() {
         let timerSec = saveNum % 60
         let timerMinut = parseInt(saveNum / 60);
         saveNum -= 1
+        let timerToShow = [`00`, `00`];
+        timerToShow[0] = timerMinut < 10 ? `0${timerMinut}` : timerMinut;
+        timerToShow[1] = timerSec < 10 ? `0${timerSec}` : timerSec;
+        document.querySelector(`.timer-number`).innerHTML = timerToShow.join(`:`);
 
-        if (timerSec < 10) {
-            if (timerMinut < 10) {
-                document.querySelector(`.timer-number`).innerHTML = `0` + Math.trunc(timerMinut) + `:` + `0` + timerSec
-            }
-            else {
-                document.querySelector(`.timer-number`).innerHTML = Math.trunc(timerMinut) + `:` + `0` + timerSec
-            }
-        }
-        else if (timerMinut < 10) {
-            document.querySelector(`.timer-number`).innerHTML = `0` + Math.trunc(timerMinut) + `:` + timerSec
-        }
-        else {
-            document.querySelector(`.timer-number`).innerHTML = Math.trunc(timerMinut) + `:` + timerSec
-        }
     }, 1000)
     document.querySelector('.timer-start').disabled = true
     document.querySelector('.timer-stop').disabled = false
@@ -180,7 +148,7 @@ function timerStart() {
 
 // Timer out Examination function 
 function control() {
-    if (saveNum == 0) {
+    if (saveNum === 0) {
         clearInterval(timer)
         document.querySelector(`.popup`).classList.add(`open`)
         document.querySelector(`.popup__text`).innerHTML = `Час вийшов!<br><h6>Для повторного запуску необхідно нажати кнопку RESET</h6>`
@@ -211,7 +179,7 @@ function timerMinus() {
     document.querySelector(`.timer-long`).innerHTML = timerValue;
     timerNum = timerValue * 60;
     saveNum = timerNum;
-    if (timerValue == 0) {
+    if (timerValue === 0) {
         clearInterval(timer)
         document.querySelector(`.popup`).classList.add(`open`)
         document.querySelector(`.popup__text`).textContent = `Виставте необхідну кількість хвилин!`
