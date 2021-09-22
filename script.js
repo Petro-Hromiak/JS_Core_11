@@ -1,5 +1,5 @@
-// Function DATE
-function cuurentDate() {
+// Function DATE another way
+// function cuurentDate() {
     // let dd = new Date();
     // let day = dd.getDate();
     // let month = dd.getMonth() + 1;
@@ -7,14 +7,11 @@ function cuurentDate() {
     // if (day < 10) day = '0' + day;
     // if (month < 10) month = '0' + month;
     // document.querySelector('.date').innerHTML = `${day} . ${month} . ${year}`
-    document.querySelector('.date').innerHTML = new Date().toLocaleDateString().replaceAll(`/`,`.`)
+//    }
+// cuurentDate()
 
-}
-cuurentDate()
-
-
-// Function HOUR
-setInterval(() => {
+// Function HOUR another way
+// setInterval(() => {
     // let dd = new Date();
     // let hh = dd.getHours();
     // let mm = dd.getMinutes();
@@ -23,10 +20,16 @@ setInterval(() => {
     // if (mm < 10) mm = '0' + mm;
     // if (ss < 10) ss = '0' + ss;
     // document.querySelector('.clock').innerHTML = `${hh} : ${mm} : ${ss}`
-    document.querySelector('.clock').innerHTML = new Date().toLocaleTimeString()
+    // })
 
+// Cuurent Date and Time
+function cuurentDateAndTime() {
+    document.querySelector('.date').innerHTML = new Date().toLocaleDateString().replaceAll(`/`,`.`)
+    setInterval(() => {
+     document.querySelector('.clock').innerHTML = new Date().toLocaleTimeString()
 })
-
+}
+cuurentDateAndTime()
 
 // STOPWATCH
 let hour = 0
